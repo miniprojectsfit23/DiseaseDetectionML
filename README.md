@@ -2,6 +2,12 @@
 
 Web Based ML Project for Sem 6 TEITB
 
+Made By:
+- Varun Anand Patkar
+- Vedant Ritesh Pawar
+- Tanish Ashwin Parmar
+- Parth Prasad Narvekar
+
 ## Installation
 
 Install Python and Pip. Then create a new virtual environment. Then write the command:
