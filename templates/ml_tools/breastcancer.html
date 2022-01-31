@@ -1,0 +1,206 @@
+{%extends 'ml_tools/base.html'%}
+{%block content%}
+<style>
+	.container {
+		padding: 100px 100px 100px 100px;
+		align-content: justify;
+	}
+
+	body {
+		background: #007bff;
+		background: linear-gradient(to right, #0062E6, #33AEFF);
+	}
+
+	.btn-login {
+		font-size: 0.9rem;
+		letter-spacing: 0.05rem;
+		padding: 0.75rem 1rem;
+	}
+
+	input {
+		width: 95%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		border-radius: 5px;
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+	.red {
+		color: red;
+		/* text-emphasis: bold; */
+		text-align: center;
+	}
+
+	.green {
+		color: green;
+		/* text-emphasis: bold; */
+		text-align: center;
+	}
+
+	/* label {
+        color: white;
+    } */
+</style>
+<div class="container">
+	<div class="row ">
+		<div class="col d-flex justify-content-center">
+			<div class="card border-0 shadow rounded-3 my-12">
+				<div class="card-body p-4 p-sm-5">
+					<h5 class="card-title text-center mb-5 fw-light fs-5"></h5>
+					<h1 style="text-align: center;">Breast Cancer Detection</h1>
+
+
+					<form method="POST">
+						{%csrf_token%}
+						<div class="form-group">
+							<label for="first"><strong>Texture Mean - standard deviation of gray-scale
+									values</strong></label> <input class="form-control" id="first" name="texture_mean"
+								type="number" step="any" required="required" style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="second"><strong>Perimeter Mean - Mean size of the core tumor</strong></label>
+							<input class="form-control" id="second" name="perimeter_mean" type="number" step="any"
+								required="required" style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="third"><strong>Smoothness Mean - Mean of local variation in radius
+									lengths</strong></label> <input class="form-control" id="third"
+								name="smoothness_mean" type="number" step="any" required="required"
+								style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="fourth"><strong>Compactness Mean</strong></label> <input class="form-control"
+								id="fourth" name="compactness_mean" type="number" step="any" required="required"
+								style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="fifth"><strong>Concavity Mean - Mean of severity of concave portions of the
+									contour</strong></label>
+							<input class="form-control" id="fifth" name="concavity_mean" type="number" step="any"
+								required="required" style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="sixth"><strong>Concave Points Mean - Mean for number of concave portions of the
+									contour</strong></label>
+							<input class="form-control" id="sixth" name="concave points_mean" type="number" step="any"
+								required="required" style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="seventh"><strong>Symmetry Mean</strong></label> <input class="form-control"
+								id="seventh" name="symmetry_mean" type="number" step="any" required="required"
+								style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="eighth"><strong>Radius Se - Standard error for the mean of distances from center
+									to points on the
+									perimeter</strong></label> <input class="form-control" name="radius_se" id="eighth"
+								type="number" step="any" required="required" style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="ninth"><strong>Compactness Se - Standard error for perimeter² / area —
+									1.0</strong></label> <input class="form-control" id="ninth" name="compactness_se"
+								type="number" step="any" required="required" style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="tenth"><strong>Concavity Se - Standard error for severity of concave portions of
+									the
+									contour</strong></label> <input class="form-control" id="tenth" name="concavity_se"
+								type="number" step="any" required="required" style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="eleventh"><strong>Concave Points Se - Standard error for number of concave
+									portions of the
+									contour</strong></label> <input class="form-control" name="concave points_se"
+								id="eleventh" type="number" step="any" required="required" style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="twelfth"><strong>Texture Worst - “worst” or largest mean value for standard
+									deviation of gray-scale
+									values</strong></label> <input class="form-control" name="texture_worst"
+								id="twelfth" type="number" step="any" required="required" style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="thirteenth"><strong>Smoothness Worst - “worst” or largest mean value for local
+									variation in radius
+									lengths</strong></label> <input class="form-control" name="smoothness_worst"
+								id="thirteenth" type="number" step="any" required="required" style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="fourteenth"><strong>Compactness Worst - “worst” or largest mean value for
+									perimeter² / area —
+									1.0</strong></label> <input class="form-control" name="compactness_worst"
+								id="fourteenth" type="number" step="any" required="required" style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="fifteenth"><strong>Concavity Worst - “worst” or largest mean value for severity
+									of concave portions of
+									the contour</strong></label> <input class="form-control" name="concavity_worst"
+								id="fifteenth" type="number" step="any" required="required" style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="sixteenth"><strong>Concave Points Worst - “worst” or largest mean value for
+									number of concave portions
+									of the contour</strong></label> <input class="form-control"
+								name="concave points_worst" id="sixteenth" type="number" step="any" required="required"
+								style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="seventeenth"><strong>Symmetry Worst</strong></label> <input class="form-control"
+								name="symmetry_worst" id="seventeenth" type="number" step="any" required="required"
+								style="font-weight:bold">
+						</div>
+
+						<div class="form-group">
+							<label for="eighteenth"><strong>Fractal Dimension Worst - “worst” or largest mean value for
+									“coastline
+									approximation” — 1</strong></label> <input class="form-control"
+								name="fractal_dimension_worst" id="eighteenth" type="number" step="any"
+								required="required" style="font-weight:bold">
+						</div>
+						<br><br>
+						<button class="btn btn-lg btn-primary w-100" type="submit">Predict</button>
+						<br>
+						<br>
+
+
+						{%if resultPresent%}
+						{%if result%}
+						<div class="red" style="padding: 10px; border: 5px solid red;">
+							<h5 style="font-size: 30px;"><b>
+									Result : Patient has <strong>high</strong> chance of Breast Cancer
+								</b></h5>
+						</div>
+						{%else%}
+						<div class="green" style="padding: 10px; border: 5px solid green;">
+							<h5 style="font-size: 30px;"><b>
+									Result : Patient has <strong>low</strong> chance of Breast Cancer
+								</b></h5>
+						</div>
+						{%endif%}
+						{%endif%}
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{%endblock%}

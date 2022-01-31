@@ -1,0 +1,89 @@
+{%extends 'ml_tools/base.html'%}
+{%block content%}
+{%load static%}
+<style>
+	.container {
+		padding: 100px 100px 100px 100px;
+		align-content: justify;
+	}
+
+	body {
+		background: #007bff;
+		background: linear-gradient(to right, #0062E6, #33AEFF);
+	}
+
+	.btn-login {
+		font-size: 0.9rem;
+		letter-spacing: 0.05rem;
+		padding: 0.75rem 1rem;
+	}
+
+	input {
+		width: 95%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		border-radius: 5px;
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+	.red {
+		color: red;
+		/* text-emphasis: bold; */
+		text-align: center;
+	}
+
+	.green {
+		color: green;
+		/* text-emphasis: bold; */
+		text-align: center;
+	}
+
+	/* label {
+        color: white;
+    } */
+</style>
+<div class="container">
+	<div class="row ">
+		<div class="col d-flex justify-content-center">
+			<div class="card border-0 shadow rounded-3 my-12">
+				<div class="card-body p-4 p-sm-5">
+					<h5 class="card-title text-center mb-5 fw-light fs-5"></h5>
+					<h1 style="text-align: center;">Malaria Detection</h1>
+
+
+					<form method="POST" enctype="multipart/form-data">
+						{%csrf_token%}
+						<div class="form-group">
+							<label for="first"><strong>Upload Image of Cell Sample</strong></label>
+							<input class="form-control" id="first" name="cell_sample" type="file" accept="image/*"
+								class="form-control-file" required="required" style="font-weight:bold">
+							<br><br>
+							<button class="btn btn-lg btn-primary w-100" type="submit">Predict</button>
+							<br><br>
+							{%if resultPresent%}
+							{%if result > 50 %}
+							<div class="red" style="padding: 10px; border: 5px solid red;">
+								<h5 style="font-size: 30px;"><b>
+										Result : Patient has <strong>{{result|floatformat:2}}%</strong> chance of
+										Malaria
+									</b></h5>
+							</div>
+							{%elif result < 50 %} <div class="green" style="padding: 10px; border: 5px solid green;">
+								<h5 style="font-size: 30px;"><b>
+										Result : Patient has <strong>{{result|floatformat:2}}%</strong> chance of
+										Malaria
+									</b></h5>
+						</div>
+						{%endif%}
+						{%endif%}
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+{%endblock%}

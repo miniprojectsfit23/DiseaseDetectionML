@@ -1,0 +1,30 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/"><img src="{%static '/ml_tools/images/logo.png'%}" alt="" height="60px"></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link" aria-current="page" href="/"><i class="fa fa-home"
+							aria-hidden="true"></i>Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" aria-current="page" href="/covid19/"><i class="fas fa-virus" aria-hidden="true"></i>Covid-19</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" aria-current="page" href="/malaria/"><i class="fas fa-bug" aria-hidden="true"></i>Malaria</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" aria-current="page" href="/heartdisease/"><i class="fas fa-heartbeat" aria-hidden="true"></i>Heart Disease</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" aria-current="page" href="/breastcancer/"><i class="fas fa-disease" aria-hidden="true"></i>Breast Cancer</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
