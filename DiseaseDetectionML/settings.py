@@ -21,12 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY") or ""
-MONGODB_USERNAME = os.environ.get("MONGODB_USERNAME") or ""
-MONGODB_PASS = os.environ.get("MONGODB_PASS") or ""
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or ""
+MONGODB_USERNAME = os.environ.get('MONGODB_USERNAME') or ""
+MONGODB_PASS = os.environ.get('MONGODB_PASS') or ""
+MONGODB_URL = os.environ.get('MONGODB_URL') or ""
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG') or False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', #'xxxxxx.herokuapp.com'
 ]
@@ -86,7 +87,7 @@ DATABASES = {
         "ENGINE": "djongo",
         "CLIENT": {
             'name': 'DiseaseDetectionDB',
-            'host': 'mongodb+srv://'+MONGODB_USERNAME+':'+MONGODB_PASS+'@cluster0.xz3j1.mongodb.net/DiseaseDetectionDB?retryWrites=true&w=majority',
+            'host': MONGODB_URL,
             'username': MONGODB_USERNAME,
             'password': MONGODB_PASS,
             "authMechanism": "SCRAM-SHA-1",
