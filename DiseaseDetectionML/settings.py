@@ -29,7 +29,7 @@ MONGODB_URL = os.environ.get('MONGODB_URL') or ""
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG') or False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', #'xxxxxx.herokuapp.com'
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'disease-detection-ml.herokuapp.com'
 ]
 
 

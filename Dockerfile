@@ -7,5 +7,4 @@ RUN apt-get update
 RUN apt-get install ffmpeg libsm6 libxext6  -y
 RUN pip install -r requirements.txt
 COPY . /code/
-EXPOSE 8000
-CMD [ "python", "./manage.py", "runserver","0.0.0.0:8000"]
+CMD [ "gunicorn", "DiseaseDetectionML.wsgi" ]
