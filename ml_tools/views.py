@@ -7,6 +7,8 @@ import cv2
 from PIL import Image
 import numpy as np
 from .models import MalariaImage, Covid19Image
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 from django.core.files.images import ImageFile
 
 # Create your views here.
@@ -64,19 +66,22 @@ def malariadetect(request):
     elif request.method == 'POST':
         cell_sample = request.FILES.get("cell_sample")
         img_name = cell_sample.name
-        m=None
-        if MalariaImage.objects.filter(image='ml_tools/static/ml_tools/images/malaria_uploads/'+img_name).exists():
-            pass
-        else:
-            try:
-                MalariaImage.objects.create(image=cell_sample)
-            except:
-                m = MalariaImage.objects.create(image=None)
-                m.image = ImageFile(
-                    open('ml_tools/static/ml_tools/images/malaria_uploads/'+img_name, "rb"))
-                m.save()
+        # m=None
+        # if MalariaImage.objects.filter(image='ml_tools/static/ml_tools/images/malaria_uploads/'+img_name).exists():
+        #     pass
+        # else:
+        #     try:
+        #         MalariaImage.objects.create(image=cell_sample)
+        #     except:
+        #         m = MalariaImage.objects.create(image=None)
+        #         m.image = ImageFile(
+        #             open('ml_tools/static/ml_tools/images/malaria_uploads/'+img_name, "rb"))
+        #         m.save()
+        path = default_storage.save('malaria_uploads/'+img_name, ContentFile(cell_sample.read()))
+        print(path)
         # img = cv2.imread('static/ml_tools/images/malaria_uploads/'+img_name)
-        img = cv2.imread(m.image.url)
+        img = cv2.imread("./static/ml_tools/images/"+path)
+        MalariaImage.objects.create(image="./static/ml_tools/images/"+path)
         img = Image.fromarray(img, 'RGB')
         img = np.array(img.resize((30, 30)))
         img_arr = []
@@ -95,18 +100,22 @@ def covid19(request):
     elif request.method == 'POST':
         cell_sample = request.FILES.get("cell_sample")
         img_name = cell_sample.name
-        m=None
-        if Covid19Image.objects.filter(image='ml_tools/static/ml_tools/images/covid_uploads/'+img_name).exists():
-            pass
-        else:
-            try:
-                m=Covid19Image.objects.create(image=cell_sample)
-            except:
-                m = Covid19Image.objects.create(image=None)
-                m.image = ImageFile(
-                    open('ml_tools/static/ml_tools/images/covid_uploads/'+img_name, "rb"))
-                m.save()
-        img = cv2.imread(m.image.url)
+        # m=None
+        # if Covid19Image.objects.filter(image='ml_tools/static/ml_tools/images/covid_uploads/'+img_name).exists():
+        #     pass
+        # else:
+        #     try:
+        #         m=Covid19Image.objects.create(image=cell_sample)
+        #     except:
+        #         m = Covid19Image.objects.create(image=None)
+        #         m.image = ImageFile(
+        #             open('ml_tools/static/ml_tools/images/covid_uploads/'+img_name, "rb"))
+        #         m.save()
+        # img = cv2.imread(m.image.url)
+        path = default_storage.save('covid_uploads/'+img_name, ContentFile(cell_sample.read()))
+        # img = cv2.imread('static/ml_tools/images/malaria_uploads/'+img_name)
+        img = cv2.imread("./static/ml_tools/images/"+path)
+        Covid19Image.objects.create(image="./static/ml_tools/images/"+path)
         img = Image.fromarray(img, 'RGB')
         img = np.array(img.resize((150, 150)))
         img_arr = []
