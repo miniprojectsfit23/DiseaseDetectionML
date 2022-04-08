@@ -1,6 +1,49 @@
 {%extends 'ml_tools/base.html'%}
 {%block content%}
 {%load static%}
+<style>
+	/* our team */
+	.inner-title{
+		color:white;
+	}
+    .our-team {
+        padding: 50px;
+		background-color: darkblue;
+    }
+
+    @media screen and (max-width: 940px) {
+        .our-team {
+            padding: 50px 10px;
+        }
+    }
+
+    .our-team .team-row {
+        margin-top: 20px;
+    }
+
+    .our-team .team-row .single-usr {
+        box-shadow: 0 2px 6px 0 rgba(218, 218, 253, 0.65), 0 2px 6px 0 rgba(206, 206, 238, 0.54);
+        margin-bottom: 20px;
+    }
+
+    .our-team .team-row .single-usr img {
+        width: 100%;
+    }
+
+    .our-team .team-row .single-usr .det-o {
+        padding: 20px;
+        background-color: #0363b0;
+    }
+
+    .our-team .team-row .single-usr .det-o h4 {
+        color: #FFF;
+        margin-bottom: 0px;
+    }
+
+    .our-team .team-row .single-usr .det-o i {
+        color: #FFF;
+    }
+</style>
 <div class="container-fluid mx-auto px-lg-5 py-lg-5">
 	<div class="row row-cols-1 row-cols-md-3 g-4">
 		<div class="col">
@@ -73,4 +116,81 @@
 		</div>
 	</div>
 </div>
+<!-- our team section-->
+<section class="our-team">
+	<div class="container">
+		<div class="inner-title row">
+			<h2>Our Team</h2>
+			<p>Take a look at our Team</p>
+		</div>
+		<div class="row team-row">
+			<div class="col-md-3 col-sm-6">
+				<div class="single-usr">
+					<img src="{% static 'ml_tools/images/VarunPatkar_Profile1.jpg' %}" alt="">
+					<div class="det-o">
+						<h4>Varun Patkar</h4>
+						<i>Cardiologist</i>
+						<br>
+						<a href="https://github.com/Varun-Patkar"><i class="fab fa-linkedin"></i></a>
+						<i class="fab fa-twitter-square"></i>
+						<i class="fab fa-github-square"></i>
+						<i class="fab fa-facebook-square"></i>
+						<i class="fab fa-instagram-square"></i>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="single-usr">
+					<img src="{% static 'ml_tools/images/Tanish_Profile1.jpg' %}" alt="">
+					<div class="det-o">
+						<h4>Tanish Parmar</h4>
+						<i>Neurologist</i>
+						<br>
+						<a href="https://github.com/tanishparmar"><i class="fab fa-linkedin"></i></a>
+						<i class="fab fa-twitter-square"></i>
+						<i class="fab fa-github-square"></i>
+						<i class="fab fa-facebook-square"></i>
+						<i class="fab fa-instagram-square"></i>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="single-usr">
+					<img src="{% static 'ml_tools/images/Parth_Profile1.jpg' %}" alt="">
+					<div class="det-o">
+						<h4>Parth Narvekar</h4>
+						<i>Orthopedician</i>
+						<br>
+						<a href="https://github.com/parthnarvekar"><i class="fab fa-linkedin"></i></a>
+						<i class="fab fa-twitter-square"></i>
+						<i class="fab fa-github-square"></i>
+						<i class="fab fa-facebook-square"></i>
+						<i class="fab fa-instagram-square"></i>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="single-usr">
+					<img src="{% static 'ml_tools/images/Vedant_Profile1.jpg' %}" alt="">
+					<div class="det-o">
+						<h4>Vedant Pawar</h4>
+						<i>Gynaecologist</i>
+						<br>
+						<a href="https://github.com/vedantrpawar"><i class="fab fa-linkedin"></i></a>
+						<i class="fab fa-twitter-square"></i>
+						<i class="fab fa-github-square"></i>
+						<i class="fab fa-facebook-square"></i>
+						<i class="fab fa-instagram-square"></i>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</section>
 {%endblock%}
